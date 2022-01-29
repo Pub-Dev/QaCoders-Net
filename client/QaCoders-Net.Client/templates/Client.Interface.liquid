@@ -1,0 +1,43 @@
+{% template Client.Interface.Annotations %}
+public interface I{{ Class }}{% if HasClientBaseInterface %} : {{ ClientBaseInterface }}{% endif %}
+{
+    {% template Client.Interface.Body %}
+{% for operation in InterfaceOperations -%}
+{% capture string_with_parameters %}
+{% for parameter in operation.Parameters %}
+{% if parameter.IsHeader == true -%}[Header("{{ parameter.Name }}")]{% endif -%}
+{% if parameter.IsBody == true -%}[Body]{% endif -%}
+{% if parameter.IsQuery == true -%}[Query{% if parameter.IsArray == true -%}(CollectionFormat = CollectionFormat.Multi){% endif -%}]{% endif -%}
+{{ parameter.Type }} {{ parameter.VariableName | replace: "x_", "" | replace: "_id", "Id" }}
+{% if GenerateOptionalParameters and parameter.IsOptional %} = null{% endif %}
+{% if parameter.IsLast == false %}, {% endif %}
+{% endfor %}
+{% endcapture %}
+{%   if GenerateOptionalParameters == false -%}
+    {% template Client.Method.Documentation %}
+    {% template Client.Method.Annotations %}
+    [{{operation.HttpMethodUpper}}("/{{operation.Path}}")]
+    {% if operation.UnwrappedResultType == "void" -%}System.Threading.Tasks.Task<ApiResponse<HttpResponseMessage>> {% else %}{{ operation.ResultType }}{% endif -%}{{ operation.ActualOperationName }}Async({{ string_with_parameters | strip_newlines }});
+{%   endif -%}
+{%   if GenerateSyncMethods -%}
+    {% template Client.Method.Documentation %}
+    {% template Client.Method.Annotations %}
+    [{{operation.HttpMethodUpper}}("/{{operation.Path}}")]
+    {% if operation.UnwrappedResultType == "void" -%}System.Threading.Tasks.Task<ApiResponse<HttpResponseMessage>> {% else %}{{ operation.SyncResultType }}{% endif -%}{{ operation.ActualOperationName }}Async({{ string_with_parameters | strip_newlines }});
+{%   endif -%}
+    /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+    {% template Client.Method.Documentation %}
+    {% template Client.Method.Annotations %}
+    [{{operation.HttpMethodUpper}}("/{{operation.Path}}")]
+    {% if operation.UnwrappedResultType == "void" -%}System.Threading.Tasks.Task<ApiResponse<HttpResponseMessage>> {% else %}{{ operation.ResultType }}{% endif -%}{{ operation.ActualOperationName }}Async({{ string_with_parameters | strip_newlines }});
+{% endfor -%}
+}
+
+public static class {{ Class }}Extensions
+{
+    public static IHttpClientBuilder Add{{ Class }}(this IServiceCollection services, string baseUrl)
+    {
+        return services.AddRefitClient<I{{ Class }}>()
+            .ConfigureHttpClient(client => client.BaseAddress = new Uri(baseUrl));
+    }
+}
