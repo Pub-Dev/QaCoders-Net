@@ -26,9 +26,9 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.2.3" />
 	</ItemGroup>
 
-	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(IgnoreApiClient)'!='true'">
 		<Exec Command="dotnet tool restore" />
-		<Exec Command="dotnet swagger tofile --output swagger-generated.json $(OutputPath)\$(AssemblyName).dll v1" />
+		<Exec Command="dotnet $(TargetDir)$(TargetFileName) --swagger" />
 		<Exec Command="$(NSwagExe_Net60) run $(SolutionDir)client\\QaCoders-Net.Client\\config.nswag" />
 	</Target>
 

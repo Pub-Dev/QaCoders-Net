@@ -6,9 +6,9 @@ public interface IClientService
 {
     Task<IEnumerable<Client>> GetAllAsync();
 
-    Task<Client> GetByIdAsync(int clientId);
+    Task<Client?> GetByIdAsync(int clientId);
 
-    Task<Client> CreateAsync(Client client);
+    Task<Client?> CreateAsync(Client client);
 
-    Task<Client> UpdateAsync(Client client);
+    Task<Client?> UpdateAsync(Client client);
 }

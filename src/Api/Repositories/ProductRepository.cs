@@ -22,7 +22,7 @@ public class ProductRepository : IProductRepository
                 Name,
                 Value,
                 CreateDate
-            FROM dbo.Product");
+            FROM [dbo].[Product]");
 
         return data.ToList();
     }
@@ -35,7 +35,7 @@ public class ProductRepository : IProductRepository
                 Name,
                 Value,
                 CreateDate
-            FROM dbo.Product
+            FROM [dbo].[Product]
             WHERE 
                 ProductId = @ProductId",
             new { ProductId = productId });
@@ -55,7 +55,7 @@ public class ProductRepository : IProductRepository
                     Name,
                     Value,
                     CreateDate
-                FROM dbo.Product
+                FROM [dbo].[Product]
                 WHERE 
                     ProductId = SCOPE_IDENTITY()",
            new { product.Name, product.Value });
@@ -66,7 +66,7 @@ public class ProductRepository : IProductRepository
     public async Task<Product> UpdateAsync(Product product)
     {
         await _dbConnection.ExecuteAsync(
-           @"UPDATE dbo.Product
+           @"UPDATE [dbo].[Product]
                  SET
                     Name = @Name,
                     Value = @Value

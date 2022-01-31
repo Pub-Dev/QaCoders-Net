@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QaCoders_Net.Entities;
+using QaCoders_Net.Interfaces.Presenters;
 using QaCoders_Net.Interfaces.Services;
-using QaCoders_Net.Request;
-using QaCoders_Net.Response;
+using QaCoders_Net.Requests;
+using QaCoders_Net.Responses;
 using System.Net;
 
 namespace QaCoders_Net.Controllers;
@@ -11,23 +12,25 @@ namespace QaCoders_Net.Controllers;
 [Route("clients")]
 public class ClientController : ControllerBase
 {
+    private readonly IPresenter _presenter;
     private readonly IClientService _clientService;
 
-    public ClientController(IClientService clientService)
+    public ClientController(
+        IPresenter presenter,
+        IClientService clientService)
     {
+        _presenter = presenter;
         _clientService = clientService;
     }
 
     [HttpGet]
-    [ProducesResponseType(typeof(ClientGetByIdResponse[]), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(ClientGetAllResponse[]), (int)HttpStatusCode.OK)]
     [ProducesResponseType(typeof(ErrorResponse), (int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> GetClientAllAsync()
     {
         var data = await _clientService.GetAllAsync();
 
-        var response = data.Select(x => (ClientGetAllResponse)x).ToArray();
-
-        return Ok(response);
+        return _presenter.GetResult(data, data => data.Select(client => (ClientGetAllResponse)client).ToArray());
     }
 
 
@@ -39,9 +42,7 @@ public class ClientController : ControllerBase
     {
         var data = await _clientService.GetByIdAsync(clientId);
 
-        var response = (ClientGetByIdResponse)data;
-
-        return Ok(response);
+        return _presenter.GetResult(data, data => (ClientGetByIdResponse)data);
     }
 
     [HttpPost]
@@ -53,9 +54,11 @@ public class ClientController : ControllerBase
 
         var data = await _clientService.CreateAsync(client);
 
-        var response = (ClientCreateResponse)data;
+        return _presenter.CreateResult(
+            data,
+            data => (ClientCreateResponse)data, (data) =>
+            (nameof(GetClientByIdAsync), "Client", new { data.ClientId }));
 
-        return CreatedAtAction(nameof(GetClientByIdAsync), new { response.ClientId }, response);
     }
 
     [HttpPatch("{clientId}")]
@@ -70,8 +73,9 @@ public class ClientController : ControllerBase
 
         var data = await _clientService.UpdateAsync(client);
 
-        var response = (ClientPatchResponse)data;
-
-        return Accepted(response);
+        return _presenter.AcceptedResult(
+            data,
+            data => (ClientPatchResponse)data, (data) =>
+            (nameof(GetClientByIdAsync), "Client", new { data.ClientId }));
     }
 }

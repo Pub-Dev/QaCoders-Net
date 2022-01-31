@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{55686B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QaCoders-Net.Client", "client\QaCoders-Net.Client\QaCoders-Net.Client.csproj", "{CD0C7DF9-FE00-4B85-B239-24CBB1B1957D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QaCoders-Net.IntegratedTests", "tests\QaCoders-Net.IntegratedTests\QaCoders-Net.IntegratedTests.csproj", "{FF462C80-840C-4DDB-A62E-FBD058553C6A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{CD0C7DF9-FE00-4B85-B239-24CBB1B1957D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD0C7DF9-FE00-4B85-B239-24CBB1B1957D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD0C7DF9-FE00-4B85-B239-24CBB1B1957D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF462C80-840C-4DDB-A62E-FBD058553C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF462C80-840C-4DDB-A62E-FBD058553C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF462C80-840C-4DDB-A62E-FBD058553C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF462C80-840C-4DDB-A62E-FBD058553C6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{C1292B2A-D999-4620-8ED4-3E598A544E3B} = {51FB05CB-F817-48A0-B147-6175AC6D9B3C}
 		{07EC70EA-7982-4195-BA8D-3564D2C12EAE} = {B2094E17-7066-4DE9-B6A0-00BB5EFD16F4}
 		{CD0C7DF9-FE00-4B85-B239-24CBB1B1957D} = {55686BC8-6E5E-4762-97CA-D28E036C4057}
+		{FF462C80-840C-4DDB-A62E-FBD058553C6A} = {B2094E17-7066-4DE9-B6A0-00BB5EFD16F4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C4956B72-C664-4D60-902D-7A7DA07EE047}

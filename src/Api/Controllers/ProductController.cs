@@ -1,8 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using QaCoders_Net.Entities;
+using QaCoders_Net.Interfaces.Presenters;
 using QaCoders_Net.Interfaces.Services;
-using QaCoders_Net.Request;
-using QaCoders_Net.Response;
+using QaCoders_Net.Requests;
+using QaCoders_Net.Responses;
 using System.Net;
 
 namespace QaCoders_Net.Controllers;
@@ -11,10 +12,14 @@ namespace QaCoders_Net.Controllers;
 [Route("products")]
 public class ProductController : ControllerBase
 {
+    private readonly IPresenter _presenter;
     private readonly IProductService _productService;
 
-    public ProductController(IProductService productService)
+    public ProductController(
+        IPresenter presenter,
+        IProductService productService)
     {
+        _presenter = presenter;
         _productService = productService;
     }
 
@@ -25,22 +30,18 @@ public class ProductController : ControllerBase
     {
         var data = await _productService.GetAllAsync();
 
-        var response = data.Select(x => (ProductGetAllResponse)x).ToArray();
-
-        return Ok(response);
+        return _presenter.GetResult(data, data => data.Select(x => (ProductGetAllResponse)x).ToArray());
     }
 
     [HttpGet("{productId}")]
     [ActionName(nameof(GetProductByIdAsync))]
     [ProducesResponseType(typeof(ProductGetByIdResponse), (int)HttpStatusCode.OK)]
-    [ProducesResponseType(typeof(ErrorResponse), (int)HttpStatusCode.NotFound)]    
+    [ProducesResponseType(typeof(ErrorResponse), (int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> GetProductByIdAsync(int productId)
     {
         var data = await _productService.GetByIdAsync(productId);
 
-        var response = (ProductGetByIdResponse)data;
-
-        return Ok(response);
+        return _presenter.GetResult(data, data => (ProductGetByIdResponse)data);
     }
 
     [HttpPost]
@@ -52,9 +53,10 @@ public class ProductController : ControllerBase
 
         var data = await _productService.CreateAsync(client);
 
-        var response = (ProductCreateResponse)data;
-
-        return CreatedAtAction(nameof(GetProductByIdAsync), new { response.ProductId }, response);
+        return _presenter.CreateResult(
+            data,
+            data => (ProductCreateResponse)data, (data) =>
+            (nameof(GetProductByIdAsync), "Product", new { data.ProductId }));
     }
 
     [HttpPatch("{productId}")]
@@ -69,8 +71,9 @@ public class ProductController : ControllerBase
 
         var data = await _productService.UpdateAsync(product);
 
-        var response = (ProductPatchResponse)data;
-
-        return Accepted(response);
+        return _presenter.AcceptedResult(
+            data,
+            data => (ProductPatchResponse)data, (data) =>
+            (nameof(GetProductByIdAsync), "Product", new { data.ProductId }));
     }
 }

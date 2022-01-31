@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "QaCoders-Net, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "title": "QaCoders-Net",
     "version": "1.0"
   },
   "paths": {
@@ -10,6 +10,7 @@
         "tags": [
           "Client"
         ],
+        "operationId": "GetClientAll",
         "responses": {
           "200": {
             "description": "Success",
@@ -18,7 +19,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClientGetByIdResponse"
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientGetAllResponse"
                   }
                 }
               },
@@ -26,7 +27,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClientGetByIdResponse"
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientGetAllResponse"
                   }
                 }
               },
@@ -34,7 +35,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClientGetByIdResponse"
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientGetAllResponse"
                   }
                 }
               }
@@ -45,17 +46,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -66,21 +67,22 @@
         "tags": [
           "Client"
         ],
+        "operationId": "CreateClient",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientCreateRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ClientCreateRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientCreateRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ClientCreateRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientCreateRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ClientCreateRequest"
               }
             }
           }
@@ -91,17 +93,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientCreateResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientCreateResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientCreateResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientCreateResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientCreateResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientCreateResponse"
                 }
               }
             }
@@ -111,17 +113,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -134,6 +136,7 @@
         "tags": [
           "Client"
         ],
+        "operationId": "GetClientByIdAsync",
         "parameters": [
           {
             "name": "clientId",
@@ -151,17 +154,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientGetByIdResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientGetByIdResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientGetByIdResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientGetByIdResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientGetByIdResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientGetByIdResponse"
                 }
               }
             }
@@ -171,17 +174,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -192,6 +195,7 @@
         "tags": [
           "Client"
         ],
+        "operationId": "PatchClient",
         "parameters": [
           {
             "name": "clientId",
@@ -207,17 +211,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientPatchRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ClientPatchRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientPatchRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ClientPatchRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ClientPatchRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ClientPatchRequest"
               }
             }
           }
@@ -228,17 +232,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientPatchResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientPatchResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientPatchResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientPatchResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClientPatchResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientPatchResponse"
                 }
               }
             }
@@ -248,17 +252,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -268,17 +272,204 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "operationId": "GetOrderAll",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderGetByIdResponse"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderGetByIdResponse"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderGetByIdResponse"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "operationId": "CreateOrder",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.OrderCreateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.OrderCreateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.OrderCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderCreateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderCreateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderCreateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/{orderId}": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "operationId": "GetOrderByIdAsync",
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderGetByIdResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderGetByIdResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderGetByIdResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -291,6 +482,7 @@
         "tags": [
           "Product"
         ],
+        "operationId": "GetProductAll",
         "responses": {
           "200": {
             "description": "Success",
@@ -299,7 +491,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ProductGetAllResponse"
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductGetAllResponse"
                   }
                 }
               },
@@ -307,7 +499,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ProductGetAllResponse"
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductGetAllResponse"
                   }
                 }
               },
@@ -315,7 +507,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ProductGetAllResponse"
+                    "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductGetAllResponse"
                   }
                 }
               }
@@ -326,17 +518,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -347,21 +539,22 @@
         "tags": [
           "Product"
         ],
+        "operationId": "CreateProduct",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductCreateRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ProductCreateRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductCreateRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ProductCreateRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductCreateRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ProductCreateRequest"
               }
             }
           }
@@ -372,17 +565,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductCreateResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductCreateResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductCreateResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductCreateResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductCreateResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductCreateResponse"
                 }
               }
             }
@@ -392,17 +585,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -415,6 +608,7 @@
         "tags": [
           "Product"
         ],
+        "operationId": "GetProductByIdAsync",
         "parameters": [
           {
             "name": "productId",
@@ -432,17 +626,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductGetByIdResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductGetByIdResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductGetByIdResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductGetByIdResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductGetByIdResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductGetByIdResponse"
                 }
               }
             }
@@ -452,17 +646,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -473,6 +667,7 @@
         "tags": [
           "Product"
         ],
+        "operationId": "PatchProduct",
         "parameters": [
           {
             "name": "productId",
@@ -488,17 +683,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductPatchRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ProductPatchRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductPatchRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ProductPatchRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ProductPatchRequest"
+                "$ref": "#/components/schemas/QaCoders_Net.Requests.ProductPatchRequest"
               }
             }
           }
@@ -509,17 +704,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductPatchResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductPatchResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductPatchResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductPatchResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ProductPatchResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductPatchResponse"
                 }
               }
             }
@@ -529,17 +724,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -549,17 +744,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ErrorResponse"
+                  "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorResponse"
                 }
               }
             }
@@ -570,7 +765,7 @@
   },
   "components": {
     "schemas": {
-      "ClientCreateRequest": {
+      "QaCoders_Net.Requests.ClientCreateRequest": {
         "type": "object",
         "properties": {
           "name": {
@@ -580,7 +775,76 @@
         },
         "additionalProperties": false
       },
-      "ClientCreateResponse": {
+      "QaCoders_Net.Requests.ClientPatchRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Requests.OrderCreateRequest": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QaCoders_Net.Requests.OrderProductRequest"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Requests.OrderProductRequest": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Requests.ProductCreateRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "number",
+            "format": "decimal"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Requests.ProductPatchRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "number",
+            "format": "decimal"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Responses.ClientCreateResponse": {
         "type": "object",
         "properties": {
           "clientId": {
@@ -598,7 +862,7 @@
         },
         "additionalProperties": false
       },
-      "ClientGetByIdResponse": {
+      "QaCoders_Net.Responses.ClientGetAllResponse": {
         "type": "object",
         "properties": {
           "clientId": {
@@ -616,17 +880,7 @@
         },
         "additionalProperties": false
       },
-      "ClientPatchRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "ClientPatchResponse": {
+      "QaCoders_Net.Responses.ClientGetByIdResponse": {
         "type": "object",
         "properties": {
           "clientId": {
@@ -644,13 +898,41 @@
         },
         "additionalProperties": false
       },
-      "ErrorMessageResponse": {
+      "QaCoders_Net.Responses.ClientPatchResponse": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
+          "clientId": {
+            "type": "integer",
+            "format": "int32"
           },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Responses.ClientResponse": {
+        "type": "object",
+        "properties": {
+          "clientId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Responses.ErrorMessageResponse": {
+        "type": "object",
+        "properties": {
           "errorCode": {
             "type": "string",
             "nullable": true
@@ -662,34 +944,101 @@
         },
         "additionalProperties": false
       },
-      "ErrorResponse": {
+      "QaCoders_Net.Responses.ErrorResponse": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
           "messages": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/ErrorMessageResponse"
+              "$ref": "#/components/schemas/QaCoders_Net.Responses.ErrorMessageResponse"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "ProductCreateRequest": {
+      "QaCoders_Net.Responses.OrderCreateResponse": {
         "type": "object",
         "properties": {
-          "name": {
-            "type": "string",
+          "orderId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "client": {
+            "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientResponse"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderProductResponse"
+            },
             "nullable": true
           },
-          "value": {
+          "total": {
             "type": "number",
-            "format": "double"
+            "format": "decimal",
+            "readOnly": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
       },
-      "ProductCreateResponse": {
+      "QaCoders_Net.Responses.OrderGetByIdResponse": {
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "client": {
+            "$ref": "#/components/schemas/QaCoders_Net.Responses.ClientResponse"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/QaCoders_Net.Responses.OrderProductResponse"
+            },
+            "nullable": true
+          },
+          "total": {
+            "type": "number",
+            "format": "decimal",
+            "readOnly": true
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Responses.OrderProductResponse": {
+        "type": "object",
+        "properties": {
+          "product": {
+            "$ref": "#/components/schemas/QaCoders_Net.Responses.ProductResponse"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "value": {
+            "type": "number",
+            "format": "decimal",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Responses.ProductCreateResponse": {
         "type": "object",
         "properties": {
           "productId": {
@@ -702,7 +1051,7 @@
           },
           "value": {
             "type": "number",
-            "format": "double"
+            "format": "decimal"
           },
           "createdDate": {
             "type": "string",
@@ -711,7 +1060,7 @@
         },
         "additionalProperties": false
       },
-      "ProductGetAllResponse": {
+      "QaCoders_Net.Responses.ProductGetAllResponse": {
         "type": "object",
         "properties": {
           "productId": {
@@ -724,7 +1073,7 @@
           },
           "value": {
             "type": "number",
-            "format": "double"
+            "format": "decimal"
           },
           "createdDate": {
             "type": "string",
@@ -733,7 +1082,7 @@
         },
         "additionalProperties": false
       },
-      "ProductGetByIdResponse": {
+      "QaCoders_Net.Responses.ProductGetByIdResponse": {
         "type": "object",
         "properties": {
           "productId": {
@@ -746,7 +1095,7 @@
           },
           "value": {
             "type": "number",
-            "format": "double"
+            "format": "decimal"
           },
           "createdDate": {
             "type": "string",
@@ -755,21 +1104,7 @@
         },
         "additionalProperties": false
       },
-      "ProductPatchRequest": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "value": {
-            "type": "number",
-            "format": "double"
-          }
-        },
-        "additionalProperties": false
-      },
-      "ProductPatchResponse": {
+      "QaCoders_Net.Responses.ProductPatchResponse": {
         "type": "object",
         "properties": {
           "productId": {
@@ -782,11 +1117,29 @@
           },
           "value": {
             "type": "number",
-            "format": "double"
+            "format": "decimal"
           },
           "createdDate": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "QaCoders_Net.Responses.ProductResponse": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "number",
+            "format": "decimal"
           }
         },
         "additionalProperties": false

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
-using QaCoders_Net.Response;
+using QaCoders_Net.Responses;
 using System.Net;
 using System.Net.Mime;
 using System.Text.Json;
@@ -23,12 +23,11 @@ public static class ExceptionMiddleware
 
                 var rootId = Guid.Parse(System.Diagnostics.Activity.Current.RootId);
 
-                var problemDetails = new ErrorResponse(new List<ErrorMessageResponse>
+                var problemDetails = new ErrorResponse(rootId, new List<ErrorMessageResponse>
                 {
                     new ErrorMessageResponse()
                     {
-                        Id = rootId,
-                        ErrorCode = "500",
+                        ErrorCode = statusCode.ToString(),
                         Message = errorDetails
                     }
                 });

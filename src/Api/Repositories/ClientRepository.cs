@@ -17,11 +17,11 @@ public class ClientRepository : IClientRepository
     public async Task<IEnumerable<Client>> GetAllAsync()
     {
         var data = await _dbConnection.QueryAsync<Client>(
-            @"SELECT 
+            @"SELECT
                 ClientId,
                 Name,
                 CreateDate
-            FROM dbo.Client");
+            FROM [dbo].[Client]");
 
         return data.ToList();
     }
@@ -29,31 +29,30 @@ public class ClientRepository : IClientRepository
     public async Task<Client> GetByIdAsync(int clientId)
     {
         var data = await _dbConnection.QueryFirstOrDefaultAsync<Client>(
-            @"SELECT 
-                    ClientId, 
-                    Name, 
-                    CreateDate      
-                FROM dbo.Client
-                WHERE 
+            @"SELECT
+                    ClientId,
+                    Name,
+                    CreateDate
+                FROM [dbo].[Client]
+                WHERE
                     ClientId = @ClientId",
             new { ClientId = clientId });
 
         return data;
     }
 
-
     public async Task<Client> CreateAsync(Client client)
     {
         var data = await _dbConnection.QueryFirstAsync<Client>(
-           @"INSERT INTO dbo.Client(Name)
+           @"INSERT INTO [dbo].[Client](Name)
                  VALUES(@Name);
-            
-                 SELECT 
-                    ClientId, 
-                    Name, 
-                    CreateDate      
+
+                 SELECT
+                    ClientId,
+                    Name,
+                    CreateDate
                 FROM dbo.Client
-                WHERE 
+                WHERE
                     ClientId = SCOPE_IDENTITY()",
            new { client.Name });
 
@@ -63,14 +62,13 @@ public class ClientRepository : IClientRepository
     public async Task<Client> UpdateAsync(Client client)
     {
         await _dbConnection.ExecuteAsync(
-           @"UPDATE dbo.Client
+           @"UPDATE [dbo].[Client]
                  SET
                     Name = @Name
-                 WHERE 
+                 WHERE
                     ClientId = @ClientId",
            new { client.ClientId, client.Name });
 
         return client;
     }
 }
-
