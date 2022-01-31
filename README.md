@@ -20,7 +20,9 @@ Here's why:
 
 ## Adding Migrations
 
-[WIP]
+```
+Add-Migration [MigrationName] -OutputDir Configuration\Migrations
+```
 
 ## Tests
 
@@ -57,6 +59,8 @@ Don't forget to give the project a star! Thanks again!
 
 - Humberto Rodrigues - [@1bberto](https://instagram.com/1bberto) - humberto_henrique1@live.com
 - Rafael Nagai - [@rafakenji23](https://instagram.com/rafakenji23) - rafakenji23@gmail.com
+
+- Discord Server - [https://discord.com/invite/EvD6Um5Jw2](https://discord.com/invite/EvD6Um5Jw2)
 
 Project Link: [https://github.com/Pub-Dev/QaCoders-Net](https://github.com/Pub-Dev/QaCoders-Net)
 
